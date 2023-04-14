@@ -11,7 +11,7 @@ function addService(event) {
     const type = document.getElementById("type").value;
     const image = document.getElementById("image").value;
     const name = document.getElementById("name").value;
-    const price = document.getElementById("price").value;
+    const price = parseFloat(document.getElementById("price").value);
     const lat = document.getElementById("lat").value;
     const long = document.getElementById("long").value;
     const facilities = [
@@ -27,8 +27,8 @@ function addService(event) {
         document.getElementById("play").checked,
         document.getElementById("pet").checked,
     ];
-    const rating = document.getElementById("rating").value;
-    const reviews = document.getElementById("reviews").value;
+    const rating = parseFloat(document.getElementById("rating").value);
+    const reviews = parseInt(document.getElementById("reviews").value);
 
     // Create a Firestore document with the retrieved data
     const db = firebase.firestore();
