@@ -1,121 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<style>
-  form{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 50px auto;
-    gap: 1px;
-  }
-</style>
-<body>
-<form>
-  <h1>Services</h1>
-  <label>
-    Type
-    <select id="type">
-      <option value="cospace">Co-working space</option>
-      <option value="hotel">Hotels</option>
-      <option value="restaurant">Restaurants</option>
-    </select>
-  </label>
-  <label>
-    Image
-    <input type="text" id="image">
-  </label>
-  <label>
-    Name
-    <input type="text" id="name">
-  </label>
-  <label>
-    Price Per Hour
-    <input type="number" id="pricePerHour">
-  </label>
-  <label>
-    Geo Location (lat, long)
-    <input type="number" step="any" id="lat">
-    <input type="number" step="any" id="long">
-  </label>
-  <span>
-            Facilities
-        </span>
-  <label for="wifi">
-    <input type="checkbox" id="wifi" name="wifi" value="wifi">
-    Wifi
-  </label>
-  <label for="food">
-    <input type="checkbox" id="food" name="food" value="food">
-    Food
-  </label>
-  <label for="charge">
-    <input type="checkbox" id="charge" name="charge" value="charge">
-    Charging
-  </label>
-  <label for="health">
-    <input type="checkbox" id="health" name="health" value="health">
-    Health
-  </label>
-  <label for="ac">
-    <input type="checkbox" id="ac" name="ac" value="ac">
-    AC
-  </label>
-  <label for="bed">
-    <input type="checkbox" id="bed" name="bed" value="bed">
-    Bed
-  </label>
-  <label for="gym">
-    <input type="checkbox" id="gym" name="gym" value="gym">
-    Gym
-  </label>
-  <label for="bicycle">
-    <input type="checkbox" id="bicycle" name="bicycle" value="bicycle">
-    Bicycle
-  </label>
-  <label for="camp">
-    <input type="checkbox" id="camp" name="camp" value="camp">
-    Camping
-  </label>
-  <label for="play">
-    <input type="checkbox" id="play" name="play" value="play">
-    Play
-  </label>
-  <label for="pet">
-    <input type="checkbox" id="pet" name="pet" value="pet">
-    Pet
-  </label>
-  <div>Facilities: <span id="facilities"></span></div>
-  <label>
-    Rating
-    <input type="text" id="rating">
-  </label>
-  <label>
-    Reviews
-    <input type="text" id="reviews">
-  </label>
-  <button type="submit">Add</button>
-</form>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Title</title>
+	</head>
+	<style>
+		form {
+			display: flex;
+			flex-direction: column;
+			width: 50%;
+			margin: 50px auto;
+			gap: 1px;
+		}
 
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-<script>
-  const firebaseConfig = {
-    apiKey: 'AIzaSyAfEvqPIdM3U_-4ZFtrvPJkvyYUiJY8arI',
-    authDomain: 'islandlink-df72b.firebaseapp.com',
-    projectId: 'islandlink-df72b',
-    storageBucket: 'islandlink-df72b.appspot.com',
-    messagingSenderId: '433863315020',
-    appId: '1:433863315020:web:3b0b2c2ed354db03c8aee9',
-    measurementId: 'G-FTBV3DNZJ2'
-  };
+		.services-table {
+			border-collapse: collapse;
+			width: 100%;
+			max-width: 800px;
+			margin: 0 auto;
+      height: 500px;
+      overflow-y: scroll;
+		}
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-<script type="module" src="main.js"></script>
-</body>
+		.services-table th,
+		.services-table td {
+			border: 1px solid #ddd;
+			padding: 8px;
+			text-align: left;
+		}
+
+		.services-table th {
+			background-color: #f2f2f2;
+		}
+
+		.services-table td img {
+			display: block;
+			margin: 0 auto;
+			max-width: 100%;
+			height: auto;
+		}
+	</style>
+	<body>
+		<form>
+			<h1>Services</h1>
+			<label>
+				Type
+				<select id="type">
+					<option value="cospace">Co-working space</option>
+					<option value="hotel">Hotels</option>
+					<option value="restaurant">Restaurants</option>
+				</select>
+			</label>
+			<label>
+				Image
+				<input type="text" id="image" />
+			</label>
+			<label>
+				Name
+				<input type="text" id="name" />
+			</label>
+			<label>
+				Price Per Hour
+				<input type="number" id="pricePerHour" />
+			</label>
+			<label>
+				Geo Location (lat, long)
+				<input type="number" step="any" id="lat" />
+				<input type="number" step="any" id="long" />
+			</label>
+			<span> Facilities </span>
+			<label for="wifi">
+				<input type="checkbox" id="wifi" name="wifi" value="wifi" />
+				Wifi
+			</label>
+			<label for="food">
+				<input type="checkbox" id="food" name="food" value="food" />
+				Food
+			</label>
+			<label for="charge">
+				<input type="checkbox" id="charge" name="charge" value="charge" />
+				Charging
+			</label>
+			<label for="health">
+				<input type="checkbox" id="health" name="health" value="health" />
+				Health
+			</label>
+			<label for="ac">
+				<input type="checkbox" id="ac" name="ac" value="ac" />
+				AC
+			</label>
+			<label for="bed">
+				<input type="checkbox" id="bed" name="bed" value="bed" />
+				Bed
+			</label>
+			<label for="gym">
+				<input type="checkbox" id="gym" name="gym" value="gym" />
+				Gym
+			</label>
+			<label for="bicycle">
+				<input type="checkbox" id="bicycle" name="bicycle" value="bicycle" />
+				Bicycle
+			</label>
+			<label for="camp">
+				<input type="checkbox" id="camp" name="camp" value="camp" />
+				Camping
+			</label>
+			<label for="play">
+				<input type="checkbox" id="play" name="play" value="play" />
+				Play
+			</label>
+			<label for="pet">
+				<input type="checkbox" id="pet" name="pet" value="pet" />
+				Pet
+			</label>
+			<div>Facilities: <span id="facilities"></span></div>
+			<label>
+				Rating
+				<input type="text" id="rating" />
+			</label>
+			<label>
+				Reviews
+				<input type="text" id="reviews" />
+			</label>
+			<button type="submit">Add</button>
+		</form>
+		<table class="services-table">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Facilities</th>
+					<th>Location</th>
+					<th>Rating</th>
+					<th>Price (Per Hour/per Day)</th>
+					<th>Reviews</th>
+				</tr>
+			</thead>
+			<tbody id="servicesData"></tbody>
+		</table>
+
+		<form>
+			<label for="userId">User ID:</label>
+			<input type="text" id="userId" name="userId" required /><br />
+			<label for="userIcon">User Icon:</label>
+			<input type="text" id="userIcon" name="userIcon" required /><br /><br />
+			<label for="userName">Name:</label>
+			<input type="text" id="userName" name="userName" required /><br /><br />
+			<label for="userComment">Comment:</label>
+			<input type="text" id="userComment" name="userComment" required /><br /><br />
+			<label for="userRating">Rating:</label>
+			<input type="text" id="userRating" name="userRating" required /><br /><br />
+			<input type="button" id="commentSubmit" value="Submit" />
+		</form>
+
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+		<script>
+			const firebaseConfig = {
+				apiKey: "AIzaSyAfEvqPIdM3U_-4ZFtrvPJkvyYUiJY8arI",
+				authDomain: "islandlink-df72b.firebaseapp.com",
+				projectId: "islandlink-df72b",
+				storageBucket: "islandlink-df72b.appspot.com",
+				messagingSenderId: "433863315020",
+				appId: "1:433863315020:web:3b0b2c2ed354db03c8aee9",
+				measurementId: "G-FTBV3DNZJ2",
+			};
+
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+		</script>
+		<script type="module" src="main.js"></script>
+	</body>
 </html>
