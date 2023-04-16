@@ -130,7 +130,7 @@ db.collection("services")
             profileImg: userIcon,
             userName: userName,
             userComment: userComment,
-            userRating: userRating
+            userRating: parseFloat(userRating)
           })
           .then(() => {
             console.log("Comment added successfully");
