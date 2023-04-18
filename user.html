@@ -3,9 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container{
+            padding: 2rem;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #5d5d5d;
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        #addQuestionForm{
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
+<div class="navbar">
+    <a href="./index.html">Main</a>
+    <a class="active" href="./user.html">Users</a>
+    <a href="#">Market</a>
+    <a href="#">Timeline</a>
+</div>
 
+<div class="container">
+<h1>Add User to Firebase</h1>
+<form id="add-user-form">
+    <label for="name-input">Name:</label>
+    <input type="text" id="name-input" name="name"><br>
+    <label for="image-input">Image:</label>
+    <input type="text" id="image-input" name="image"><br>
+    <button type="submit">Add User</button>
+</form>
+
+
+    <table id="users-table">
+        <h2>Users</h2>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Image</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <form id="addPost">
+        <h1>Add Post to Firestore</h1>
+        <label for="id">User ID:</label>
+        <input type="text" id="id" name="id" required><br>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br>
+
+        <label for="commentsCount">Comments Count:</label>
+        <input type="number" id="commentsCount" value="0" name="commentsCount" required><br>
+
+        <label for="likesCount">Likes Count:</label>
+        <input type="number" id="likesCount"  value="0" name="likesCount" required><br>
+
+        <label for="image">Image URL:</label>
+        <input type="url" id="image" name="image" required><br>
+
+        <label for="time">Time:</label>
+        <input type="datetime-local" id="time" name="time" required><br>
+
+        <button type="submit">Add Post</button>
+    </form>
+
+    <form id="addQuestionForm">
+        <h1>Add Question to Firestore</h1>
+        <label for="questionUserId">User ID:</label>
+        <input type="text" id="questionUserId" name="questionUserId" required><br>
+
+        <label for="question">Question:</label>
+        <input type="text" id="question" name="question" required><br>
+
+        <label for="questionTime">Time:</label>
+        <input type="datetime-local" id="questionTime" name="questionTime" required><br>
+
+        <label for="upvotesCount">Upvotes:</label>
+        <input type="number" id="upvotesCount" name="upvotesCount" value="0" required><br>
+
+        <label for="answersCount">Answers Count:</label>
+        <input type="number" id="answersCount" name="answersCount" value="0" required><br>
+
+        <label for="topAnswer">Top Answer:</label>
+        <input type="text" id="topAnswer" name="topAnswer"><br>
+
+        <label for="topAnswerUserId">Top Answer User ID:</label>
+        <input type="text" id="topAnswerUserId" name="topAnswerUserId"><br>
+
+        <button type="submit">Add Question</button>
+    </form>
+</div>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
