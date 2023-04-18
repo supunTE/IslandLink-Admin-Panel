@@ -40,15 +40,23 @@
         max-width: 100%;
         height: auto;
     }
+
+	p.reviews{
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2; /* number of lines to show */
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
 </style>
 <body>
+<div class="navbar">
+	<a class="active" href="./index.html">Main</a>
+	<a href="./user.html">Users</a>
+	<a href="#">Market</a>
+	<a href="#">Timeline</a>
+</div>
 <form>
-	<div class="navbar">
-		<a class="active" href="#">Main</a>
-		<a href="#">Users</a>
-		<a href="#">Market</a>
-		<a href="#">Timeline</a>
-	</div>
     <h1>Services</h1>
     <label>
         Type
@@ -149,8 +157,9 @@
 </table>
 
 <form>
-    <label for="userId">Doc ID:</label>
-    <input type="text" id="userId" name="userId" required/><br/>
+	<h2>Add Comments</h2>
+    <label for="docID">Doc ID:</label>
+    <input type="text" id="docID" name="docID" required/><br/>
     <label for="userIcon">User Icon:</label>
     <input type="text" id="userIcon" name="userIcon" required/><br/><br/>
     <label for="userName">Name:</label>

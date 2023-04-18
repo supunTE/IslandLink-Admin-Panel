@@ -93,7 +93,7 @@ db.collection("services")
                       <img src="${comment.profileImg}" width="50" height="50">
                       <strong>${comment.userName}</strong>
                       <span>${comment.userRating}/5</span>
-                      <p>${comment.userComment}</p>
+                      <p class="reviews">${comment.userComment}</p>
                     </div>
                   `;
                 });
@@ -112,19 +112,19 @@ db.collection("services")
     
 
     function addComment() {
-        const userId = document.getElementById('userId').value;
+        const docId = (document.getElementById('docID').value).trim();
         const userIcon = document.getElementById('userIcon').value;
         const userName = document.getElementById('userName').value;
         const userComment = document.getElementById('userComment').value;
         const userRating = document.getElementById('userRating').value;
 
-        if(!userId || !userIcon || !userName || !userComment || !userRating) {
+        if(!docId || !userIcon || !userName || !userComment || !userRating) {
             alert('Please fill all the fields');
             return;
         }
         
         db.collection("services")
-          .doc(userId)
+          .doc(docId)
           .collection("comments")
           .add({
             profileImg: userIcon,
