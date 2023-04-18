@@ -1,4 +1,13 @@
 {
   "cleanUrls": false,
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    {
+      "source": "/user.html",
+      "destination": "/user.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
 }
