@@ -2,11 +2,11 @@
   "cleanUrls": false,
   "rewrites": [
     {
-      "source": "/user.html",
+      "source": "/user",
       "destination": "/user.html"
     },
     {
-      "source": "/index.html",
+      "source": "/index",
       "destination": "/index.html"
     }
   ]
