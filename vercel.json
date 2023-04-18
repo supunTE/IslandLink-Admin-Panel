@@ -1,13 +1,7 @@
 {
   "cleanUrls": false,
   "rewrites": [
-    {
-      "source": "/user",
-      "destination": "/user.html"
-    },
-    {
-      "source": "/index",
-      "destination": "/index.html"
-    }
+    { "source": "/", "destination": "/" },
+    { "source": "/user.html", "destination": "/" }
   ]
 }
