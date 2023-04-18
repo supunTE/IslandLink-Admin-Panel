@@ -6,8 +6,8 @@
       "destination": "/user.html"
     },
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/index.html",
+      "destination": "/index.html"
     }
   ]
 }
